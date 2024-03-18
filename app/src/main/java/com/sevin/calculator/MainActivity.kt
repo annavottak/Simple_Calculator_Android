@@ -18,9 +18,6 @@ class MainActivity : AppCompatActivity() {
         val view = binding.root
         setContentView(view)
 
-//        binding.button1.setOnClickListener {
-//
-//        }
     }
     fun mySum(view: View) {
         number1 = binding.editN1.text.toString().toDoubleOrNull()
