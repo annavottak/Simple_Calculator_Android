@@ -8,9 +8,9 @@ import com.sevin.calculator.databinding.ActivityMainBinding
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
-    var number1 : Double? = null
-    var number2 : Double? = null
-    var result : Double? = null
+    var number1: Double? = null
+    var number2: Double? = null
+    var result: Double? = null
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -19,18 +19,19 @@ class MainActivity : AppCompatActivity() {
         setContentView(view)
 
     }
+
     fun mySum(view: View) {
         number1 = binding.editN1.text.toString().toDoubleOrNull()
         number2 = binding.editN2.text.toString().toDoubleOrNull()
 
-        if (number1 != null && number2 != null ) {
-            result = number1!! + number2!! //bu değişkenlerin null olup olmadığını kontrol ettiğimiz için kesin null değildir diyebiliriz.
+        if (number1 != null && number2 != null) {
+            result = number1!! + number2!!
             binding.result.text = "Result: ${result}"
-        }
-        else {
+        } else {
             binding.result.text = "Enter Number!"
         }
     }
+
     fun mySub(view: View) {
         number1 = binding.editN1.text.toString().toDoubleOrNull()
         number2 = binding.editN2.text.toString().toDoubleOrNull()
@@ -56,21 +57,17 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    fun myDiv(view:View) {
+    fun myDiv(view: View) {
         number1 = binding.editN1.text.toString().toDoubleOrNull()
         number2 = binding.editN2.text.toString().toDoubleOrNull()
 
-        if (number1 != null && number2 != null ) {
+        if (number1 != null && number2 != null) {
             result = number1!! / number2!!
             binding.result.text = "Result: ${result}"
-        }
-        else {
+        } else {
             binding.result.text = "Enter Number!"
         }
     }
-
-
-
 
 
 }
