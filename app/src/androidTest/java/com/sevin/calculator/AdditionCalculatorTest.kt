@@ -11,12 +11,13 @@ import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
 
-class Additioncalculatortest {
+class AdditionCalculatorTest {
     @get:Rule
     val activityRule = ActivityScenarioRule(MainActivity::class.java)
 
+
     @Test
-    fun additionButtonWithoutNumber() {
+    fun additionButtonWithoutNumbers() {
         onView(withId(R.id.addition)).perform(click())
         onView(withId(R.id.result)).check(matches(withText("Enter Number!")))
     }
@@ -72,12 +73,37 @@ class Additioncalculatortest {
         onView(withId(R.id.editN1)).perform(typeText("0"), closeSoftKeyboard())
         onView(withId(R.id.editN2)).perform(typeText("1"), closeSoftKeyboard())
         onView(withId(R.id.addition)).perform(click())
-        onView(withId(R.id.result)).check(matches(withText("Result: 10.0")))
+        onView(withId(R.id.result)).check(matches(withText("Result: 1.0")))
     }
+
     @Test
     fun additionButtonWithLetters() {
         onView(withId(R.id.editN1)).perform(typeText("a"), closeSoftKeyboard())
         onView(withId(R.id.editN2)).perform(typeText("s"), closeSoftKeyboard())
+        onView(withId(R.id.addition)).perform(click())
+        onView(withId(R.id.result)).check(matches(withText("Enter Number!")))
+    }
+
+    @Test
+    fun additionButtonWithLetterAndNumber() {
+        onView(withId(R.id.editN1)).perform(typeText("5"), closeSoftKeyboard())
+        onView(withId(R.id.editN2)).perform(typeText("s"), closeSoftKeyboard())
+        onView(withId(R.id.addition)).perform(click())
+        onView(withId(R.id.result)).check(matches(withText("Enter Number!")))
+    }
+
+    @Test
+    fun additionButtonWithSpecialSymbols() {
+        onView(withId(R.id.editN1)).perform(typeText("*"), closeSoftKeyboard())
+        onView(withId(R.id.editN2)).perform(typeText("+"), closeSoftKeyboard())
+        onView(withId(R.id.addition)).perform(click())
+        onView(withId(R.id.result)).check(matches(withText("Enter Number!")))
+    }
+
+    @Test
+    fun additionButtonWithSpecialSymbolAndNumber() {
+        onView(withId(R.id.editN1)).perform(typeText("9"), closeSoftKeyboard())
+        onView(withId(R.id.editN2)).perform(typeText("+"), closeSoftKeyboard())
         onView(withId(R.id.addition)).perform(click())
         onView(withId(R.id.result)).check(matches(withText("Enter Number!")))
     }
